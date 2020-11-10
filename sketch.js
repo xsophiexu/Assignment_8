@@ -1,16 +1,34 @@
-let img;
+let ap, ba, basket, wa, cat1, cat2;
+let character, chess, co, con, idm, orch, ori, py, snow, chaos;
 let size = 1;
 
 function preload() {
-    img = loadImage('purplemountains.jpg');
+    ap = loadImage('apple.png');
+    ba = loadImage('banana.png');
+    basket = loadImage('basket.png');
+    wa = loadImage('watermelon.png');
+    cat1 = loadImage('cat1.png');
+    cat2 = loadImage('cat2.png');
+    
+    character = loadImage('character.jpg');
+    chess = loadImage('chess.jpg');
+    co = loadImage('container.jpg');
+    con = loadImage('controller.jpg');
+    idm = loadImage('idmLogo.jpg');
+    orch = loadImage('orchestra.jpg');
+    ori = loadImage('origami.jpg');
+    py = loadImage('pyramid.jpg');
+    snow = loadImage('snowman.jpg');
+    chaos = loadImage('volume.jpg');
 }
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   
-    image(img, 0, 0, 1920*.7*size, 1080*.7*size);
-    tintPhoto();
-    
+    image(character, 0, 0);
+    //tintPhoto();
+    blur();
 }
 
 function tintPhoto() {
@@ -35,9 +53,9 @@ function tintPhoto() {
 
 function blur() {
   loadPixels();
-  for (var y = 0; y < height; y++) {
-        for (var x = 0; x < width; x++) {
-          boxBlur(x, y, 4);
+  for (var y = 0; y < 100; y++) {
+        for (var x = 500; x < 600; x++) {
+          boxBlur(x, y, 20);
         }
       }
       updatePixels();
@@ -53,9 +71,9 @@ function boxBlur (x, y, bSize) {
   let avgB = 0;
   
   let pixelsSeen = 0;
-  
   for (let dx = -bSize; dx < bSize+1; dx++) {
     for (let dy = -bSize; dy < bSize+1; dy++) {
+   
       let index = getIndex(x + dx, y + dy);
       
       if (index < 0 || index > pixels.length) {
